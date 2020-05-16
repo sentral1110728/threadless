@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>category:</strong>
+  <% @article.category_articles.each do |category_article|%>
+    <%= category_article.category.name %>
+  <% end %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @article.title %>
 </p>
