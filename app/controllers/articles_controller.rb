@@ -10,7 +10,10 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   # GET /articles/1.json
-  def show; end
+  def show 
+    @new_comment = Comment.new
+    @comments = @article.comments.includes(:user).order(created_at: :desc)
+  end
 
   # GET /articles/new
   def new
