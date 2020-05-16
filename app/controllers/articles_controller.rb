@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_article, only: %i[show edit update destroy]
 
   # GET /articles
@@ -67,6 +68,6 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :body, { category_ids: [] })
+    params.require(:article).permit(:title, :body, { category_ids: [] }).merge( user_id: current_user.id )
   end
 end
