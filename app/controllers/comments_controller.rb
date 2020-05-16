@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = Comment.create(comment_params)
     if @comment.save
-      redirect_to article_path(@article)
+      redirect_to article_path(@article), notice: 'コメントしました'
     else
-      redirect_to article_path(@article)
+      redirect_to article_path(@article), notice: 'コメントできませんでした'
     end
   end
 
